@@ -9,7 +9,7 @@ docker-compose run
 There will be an admin account created automatically
 
 Go to http://127.0.0.1:8000/admin/
-Type theese and ented
+Type theese and enter
 
 ```
 username: test
