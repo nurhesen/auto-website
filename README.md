@@ -9,8 +9,6 @@ docker-compose run
 
 # Without Docker
 
-# Auto-website
-
 
 
 # Clone the project
