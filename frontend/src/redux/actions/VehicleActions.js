@@ -7,7 +7,7 @@ export const getVehiclesAction = (dispatch, getState) => {
     type: "GET_VEHICLE_REQUEST",
   });
   axios
-    .get(process.env.REACT_APP_BASE_URL + "/vehicles/", {
+    .get(process.env.REACT_APP_API_URL + "/vehicles/", {
       params: Object.fromEntries(
         Object.entries(searchForm).filter(([_, v]) => v != "")
       ),
@@ -32,7 +32,7 @@ export const getCurrentVehicleAction = (id) => async (dispatch, getState) => {
     type: "GET_VEHICLE_REQUEST",
   });
   axios
-    .get(process.env.REACT_APP_BASE_URL + "/vehicles/" + id + "/", {
+    .get(process.env.REACT_APP_API_URL + "/vehicles/" + id + "/", {
       params: Object.fromEntries(
         Object.entries(searchForm).filter(([_, v]) => v != "")
       ),
@@ -55,7 +55,7 @@ export const getBrandsAction = (dispatch) => {
     type: "GET_BRAND_LIST_REQUEST",
   });
   axios
-    .get(process.env.REACT_APP_BASE_URL + "/vehicles/brands/")
+    .get(process.env.REACT_APP_API_URL + "/vehicles/brands/")
     .then(function (response) {
       dispatch({
         type: "GET_BRAND_LIST_SUCCESS",
