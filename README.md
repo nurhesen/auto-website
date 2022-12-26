@@ -3,7 +3,7 @@
 ```
 
 docker-compose build
-docker-compose run
+docker-compose up
 
 ```
 There will be an admin account created automatically
