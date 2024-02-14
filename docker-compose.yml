@@ -4,21 +4,32 @@ services:
   django:
     build: .
     container_name: django
-    command: bash -c '
-      python manage.py makemigrations
-      && python manage.py migrate
-      && python manage.py shell < createuser.py
-      && python manage.py runserver 0.0.0.0:8000 '
     volumes:
       - .:/usr/src/app/
+      - /usr/src/app/media
     ports:
       - "8000:8000"
     environment:
       - DEBUG=1
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
-
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=mysql-db
+      - MYSQL_USER=mysql-user
+      - MYSQL_PASSWORD=mysql-password
+      - MYSQL_ROOT_PASSWORD=mysql-root-password
     depends_on:
       - db
+
+  react:
+    build: ./react-app
+    container_name: react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./react-app:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: always
 
   db:
     image: mysql
@@ -29,7 +40,8 @@ services:
       - MYSQL_USER=mysql-user
       - MYSQL_PASSWORD=mysql-password
       - MYSQL_ROOT_PASSWORD=mysql-root-password
-
+    ports:
+      - "3306:3306"
     restart: always
 
 volumes:
