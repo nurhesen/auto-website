@@ -36,7 +36,7 @@ services:
     restart: always
 
   db:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: db
     environment:
       - MYSQL_PORT=3306
@@ -47,7 +47,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx:8.0
+    image: nginx:latest
     container_name: nginx
     ports:
       - "8080:8080"
