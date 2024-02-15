@@ -4,11 +4,12 @@ services:
   django:
     build: .
     container_name: django
-    volumes:
-      - .:/usr/src/app/
-      - /usr/src/app/media
     ports:
       - "8000:8000"
+    volumes:
+      - .:/usr/src/app/
+      - media:/usr/src/app/media
+      - static:/usr/src/app/out
     environment:
       - DEBUG=1
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
@@ -26,6 +27,9 @@ services:
     container_name: react
     ports:
       - "3000:3000"
+    environment:
+      - REACT_APP_BASE_URL=
+      - REACT_APP_API_URL=/api
     volumes:
       - ./react-app:/usr/src/app
       - /usr/src/app/node_modules
@@ -40,9 +44,22 @@ services:
       - MYSQL_USER=mysql-user
       - MYSQL_PASSWORD=mysql-password
       - MYSQL_ROOT_PASSWORD=mysql-root-password
-    ports:
-      - "3306:3306"
     restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - media:/usr/src/app/media/
+      - static:/usr/src/app/static/
+    depends_on:
+      - django
+      - react
 
 volumes:
   pgdata:
+  media:
+  static:

@@ -27,17 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
+        "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-        "corsheaders",
+
 
     'rest_framework',
     'vehicles',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-        "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,9 +61,8 @@ ROOT_URLCONF = 'auto.urls'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    
+    "http://localhost:8080",
+
 
 ]
 
@@ -109,6 +108,18 @@ DATABASES = {
 }
 
 
+# settings.py
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',  # Adjust the path as needed
+        }
+    }
+else:
+    # Configure your production database settings here
+    pass
 
 
 
@@ -146,7 +157,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/dj-static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -155,9 +166,16 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR,"static"),
+     os.path.join(BASE_DIR,"dj-static"),
  #   '/var/www/static/',
 ]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'vehicles', 'static'),
+    os.path.join(BASE_DIR, 'brands', 'static'),
+]
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'out')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

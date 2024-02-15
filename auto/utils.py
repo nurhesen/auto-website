@@ -1,5 +1,5 @@
-# This function gets the data and filters it out according to the query
 
+# This function gets the data and filters it out according to the query
 class CustomFilter:
     def __init__(self, model, request, fields ):
         self.model=model

@@ -14,5 +14,9 @@ echo "Connection to $HOST:$PORT is active!"
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata db_dump.json
-python manage.py collectstatic
-python manage.py runserver 0.0.0.0:8000
+python manage.py collectstatic --noinput
+
+
+gunicorn --bind 0.0.0.0:8000 auto.wsgi
+
+# gunicorn auto.wsgi:application --bind 0.0.0.0:8000
