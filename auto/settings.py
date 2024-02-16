@@ -162,3 +162,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'out')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+CORS_ORIGIN_ALLOW_ALL = True
