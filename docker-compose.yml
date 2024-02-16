@@ -8,8 +8,8 @@ services:
       - "8000:8000"
     volumes:
       - .:/usr/src/app/
-      - media:/usr/src/app/media
-      - static:/usr/src/app/out
+      - ./media:/usr/src/app/media
+      - ./static:/usr/src/app/out
     environment:
       - DEBUG=1
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]

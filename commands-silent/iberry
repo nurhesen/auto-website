@@ -9,9 +9,9 @@ server {
         proxy_set_header X-Forwarded-For \;
     }
 
-#    location /static/ {
-#        alias C:\Users\Dell Latitude E7450\Downloads\iberry\static\;
-#    }
+    location /dj-static/ {
+        alias C:\Users\Dell Latitude E7450\Downloads\iberry\out\;
+    }
 
 #    location /media/ {
 #        alias C:\Users\Dell Latitude E7450\Downloads\iberry\media\;
