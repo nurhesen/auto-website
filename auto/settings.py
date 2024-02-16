@@ -150,7 +150,7 @@ STATIC_URL = '/dj-static/'
 
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR,"out"),
+     os.path.join(BASE_DIR,"dj-static"),
 
 
 ]
