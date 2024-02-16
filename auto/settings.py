@@ -149,12 +149,6 @@ STATIC_URL = '/dj-static/'
 
 
 
-
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR,"dj-static"),
- #   '/var/www/static/',
-]
-
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR,"out"),
 
@@ -166,7 +160,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'out')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-CORS_ORIGIN_ALLOW_ALL = True
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
+# CORS_ORIGIN_ALLOW_ALL = True
+# SECURE_CROSS_ORIGIN_OPENER_POLICY = None
