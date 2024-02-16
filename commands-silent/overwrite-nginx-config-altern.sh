@@ -8,13 +8,13 @@ current_location="$(pwd)"
 # Nginx configuration content with user-provided IP
 nginx_config="
 
-    location /static/ {
-        alias $current_location/static/;
-    }
+#    location /static/ {
+#        alias $current_location/static/;
+#    }
 
-    location /media/ {
-        alias $current_location/media/;
-    }
+#    location /media/ {
+#        alias $current_location/media/;
+#    }
 }
 "
 

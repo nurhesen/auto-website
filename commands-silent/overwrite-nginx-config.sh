@@ -20,13 +20,13 @@ server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     }
 
-    location /static/ {
-        alias $current_location/static/;
-    }
+#    location /static/ {
+#        alias $current_location/static/;
+#    }
 
-    location /media/ {
-        alias $current_location/media/;
-    }
+#    location /media/ {
+#        alias $current_location/media/;
+#    }
 }
 "
 
