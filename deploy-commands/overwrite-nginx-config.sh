@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# Prompt user for the server IP address
-read -p "Enter the domain or server IP address: " server_ip
-
+# Check if argument exists
+if [ -z $1 ]; then
+    server_ip = "$1"
+else
+    # If there is no argument then prompt user for the server IP address
+    read -p "Enter the domain or server IP address: " server_ip
+fi
 # Specify the file path and name
 nginx_config_file="deploy-commands/iberry"
 current_location="$(pwd)"

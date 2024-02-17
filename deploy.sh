@@ -3,8 +3,7 @@ cd "$(dirname "$0")"
 
 
 echo "Overwriting nginx configuration"
-sh deploy-commands/overwrite-nginx-config.sh
-
+sh deploy-commands/overwrite-nginx-config.sh $1
 
 
 sleep 2
