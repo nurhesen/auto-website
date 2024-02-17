@@ -16,5 +16,4 @@ COPY . .
 # Expose port
 EXPOSE 3000
 
-# Command to run React
-CMD ["npm", "start"]
+
