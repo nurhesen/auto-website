@@ -14,7 +14,9 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY media.zip ./
-RUN unzip -o media.zip
+
+RUN mkdir /temp_media && unzip -o media.zip -d /temp_media
+
 # Setting the default command to be executed by the entrypoint script
 CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh"]
 
