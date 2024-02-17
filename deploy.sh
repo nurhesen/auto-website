@@ -1,14 +1,10 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-# Check if the skip-nginx-overwrite variable is set
-if [ "$1" = "skip-nginx-overwrite" ]; then
-    echo "Skipping skip-nginx-overwrite..."
-    sh deploy-commands/overwrite-nginx-config-altern.sh
-else
-    echo "Overwriting nginx configuration"
-    sh deploy-commands/overwrite-nginx-config.sh
-fi
+
+echo "Overwriting nginx configuration"
+sh deploy-commands/overwrite-nginx-config.sh
+
 
 
 sleep 2
