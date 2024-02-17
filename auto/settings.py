@@ -30,26 +30,25 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-        "corsheaders",
+
+    "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-
-
     'rest_framework',
     'vehicles',
     'brands',
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
-
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -108,20 +107,6 @@ DATABASES = {
 }
 
 
-# settings.py
-
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',  # Adjust the path as needed
-        }
-    }
-else:
-    # Configure your production database settings here
-    pass
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -164,15 +149,10 @@ STATIC_URL = '/dj-static/'
 
 
 
-
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR,"dj-static"),
- #   '/var/www/static/',
-]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'vehicles', 'static'),
-    os.path.join(BASE_DIR, 'brands', 'static'),
+
 ]
 
 
