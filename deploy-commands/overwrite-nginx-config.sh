@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if argument exists
-if [ -z $1 ]; then
+if [ $1 ]; then
     server_ip = "$1"
 else
     # If there is no argument then prompt user for the server IP address
