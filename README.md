@@ -7,14 +7,6 @@ docker-compose up
 
 ```
 
-Sometimes there is a bug. So if it doesn't work first time then run the second command again.
-
-```
-
-docker-compose up
-
-```
-
 
 There will be an admin account created automatically
 
@@ -22,8 +14,8 @@ Go to http://127.0.0.1:8000/admin/
 Type theese and enter
 
 ```
-username: test
-password: test
+username: admin
+password: admin
 
 ```
 
