@@ -4,7 +4,7 @@
 read -p "Enter the domain or server IP address: " server_ip
 
 # Specify the file path and name
-nginx_config_file="commands-silent/iberry"
+nginx_config_file="deploy-commands/iberry"
 current_location="$(pwd)"
 
 # Nginx configuration content with user-provided IP

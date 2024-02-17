@@ -4,32 +4,32 @@ cd "$(dirname "$0")"
 # Check if the skip-nginx-overwrite variable is set
 if [ "$1" = "skip-nginx-overwrite" ]; then
     echo "Skipping skip-nginx-overwrite..."
-    sh commands-silent/overwrite-nginx-config-altern.sh
+    sh deploy-commands/overwrite-nginx-config-altern.sh
 else
     echo "Overwriting nginx configuration"
-    sh commands-silent/overwrite-nginx-config.sh
+    sh deploy-commands/overwrite-nginx-config.sh
 fi
 
 
 sleep 2
 
 echo "Overwriting systemd configuration"
-sh commands-silent/overwrite-systemd-config.sh
+sh deploy-commands/overwrite-systemd-config.sh
 
 sleep 2
 
 echo "Installing Docker"
-sh commands-silent/install-docker.sh
+sh deploy-commands/install-docker.sh
 
 sleep 2
 
 echo "Installing Docker compose"
-sh commands-silent/install-docker-compose.sh
+sh deploy-commands/install-docker-compose.sh
 
 sleep 2
 
 echo "Setting Docker permissions"
-sh commands-silent/docker-permission.sh
+sh deploy-commands/docker-permission.sh
 
 sleep 10
 
@@ -48,16 +48,16 @@ echo "Docker-compose build has finished, continuing with the script."
 sleep 2
 
 echo "Setting up systemctl"
-sh commands-silent/setup-systemctl.sh
+sh deploy-commands/setup-systemctl.sh
 
 sleep 2
 
 echo "Setting up nginx"
-sh commands-silent/setup-nginx.sh
+sh deploy-commands/setup-nginx.sh
 
 
 # Delete scripts
-rm -r "commands-silent"
+rm -r "deploy-commands"
 rm "$0"
 
 echo "Rebooting..."

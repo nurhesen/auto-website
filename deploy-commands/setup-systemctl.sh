@@ -9,7 +9,7 @@ echo "sudo apt update" && sudo apt update -qq
 echo "sudo systemctl start docker" && sudo systemctl start docker
 echo "sudo systemctl enable docker" && sudo systemctl enable docker
 
-echo "sudo cp -f commands-silent/docker-compose-app.service /etc/systemd/system/" && sudo cp -f commands-silent/docker-compose-app.service /etc/systemd/system/
+echo "sudo cp -f deploy-commands/docker-compose-app.service /etc/systemd/system/" && sudo cp -f deploy-commands/docker-compose-app.service /etc/systemd/system/
 
 # Uncomment the lines below if you want to echo commented lines as well
 # echo "sudo nano /etc/systemd/system/docker-compose-app.service"

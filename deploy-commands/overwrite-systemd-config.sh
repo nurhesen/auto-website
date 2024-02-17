@@ -3,7 +3,7 @@
 
 
 # Specify the file path and name
-nginx_config_file="commands-silent/docker-compose-app.service"
+nginx_config_file="deploy-commands/docker-compose-app.service"
 current_location="$(pwd)"
 
 
