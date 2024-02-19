@@ -40,11 +40,11 @@ server {
     }
 
     location /dj-static/ {
-        alias $current_location/out/;
+        alias $current_location/django-backend/out/;
     }
 
     location /media/ {
-        alias $current_location/media/;
+        alias $current_location/django-backend/media/;
     }
 }
 "

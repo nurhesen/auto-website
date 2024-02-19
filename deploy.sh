@@ -51,9 +51,5 @@ echo "Setting up nginx"
 sh deploy-commands/setup-nginx.sh
 
 
-# Delete scripts
-rm -r "deploy-commands"
-rm "$0"
-
 echo "Rebooting..."
 sudo reboot
