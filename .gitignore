@@ -50,6 +50,11 @@ out/
 /static/
 static
 static/
+/media
+/media/
+media
+media/
+
 
 # Distribution / packaging
 .Python
