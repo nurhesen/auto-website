@@ -1,16 +1,40 @@
-# With Docker easy peasy
+# Deploy with one click at my AWS instance:
+
+[nurhesen.click/auto-website-deploy](https://www.nurhesen.click/deploy)
+
+P.S: Instance will only be active for 10 minutes after it is deployed
+
+
+# For development on local pc:
+
+Clone the repository:
+
+```
+git clone https://github.com/nurhesen/auto-website.git
 
 ```
 
+Enter the folder:
+```
+cd auto-website
+
+```
+
+Build and run docker-compose:
+
+```
 docker-compose build
 docker-compose up
 
 ```
 
 
-There will be an admin account created automatically
 
-Go to http://127.0.0.1:8000/admin/
+Frontend is hosted at [localhost:3000](http://localhost:3000/)
+Backend is hosted at [localhost:8000](http://localhost:8000/)
+
+Go to [localhost:8000/admin/](http://localhost:8000/admin/)
+There will be an admin account created automatically from database dump
 Type theese and enter
 
 ```
@@ -20,64 +44,25 @@ password: admin
 ```
 
 
-# If you don't want to use Docker then
+# For deployment (Deployment scripts are for Ubuntu 20.04):
 
+Clone the repository:
 
-
-# Clone the project
+```
+git clone https://github.com/nurhesen/auto-website.git
 
 ```
 
-git clone https://github.com/nurhesen/auto-website.git
+Enter the folder:
+```
 cd auto-website
 
 ```
 
-# Backend
-
-Create virtualenvironment at core folder
+Edit the .env file for your needs and run deploy.sh script:
+```
+nano .env
+source deploy.sh yourdomain.com
 
 ```
 
-virtualenv venv
-pip install -r requirements.txt
-
-```
-
-Run Backend on http://127.0.0.1:8000
-
-```
-
-python manage.py runserver
-
-```
-Now you can see the project at http://127.0.0.1:8000
-
-If you want to run frontend separately then
-
-# Frontend
-
-Go to frontend folder
-
-```
-
-cd frontend
-
-```
-
-install all packages
-
-```
-
-yarn install
-
-```
-
-Run frontend on http://localhost:3000
-
-```
-
-yarn start
-
-```
-Now you can go to http://localhost:3000 and view the project
