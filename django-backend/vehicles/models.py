@@ -30,6 +30,7 @@ class Vehicle(models.Model):
         (4, ("Electro")),
         (4, ("Hybrid")),
     )
+
     title=models.CharField(max_length=250)
     color=models.CharField(max_length=250)
     condition = models.IntegerField(choices=Conditions, default="new")
@@ -42,15 +43,15 @@ class Vehicle(models.Model):
     km_traveled = models.FloatField()
     year = models.IntegerField()
 
-    
-
     def __str__(self):
         return self.title
+
+
+
 
 class VehicleImages(models.Model):
     image=models.ImageField(upload_to ='media/vehicles/%Y/%m/%d/')
     post=models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='images')
-
 
     def __str__(self):
         return str(self.image).split('/')[-1]

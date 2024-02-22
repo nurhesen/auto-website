@@ -15,8 +15,6 @@ class CustomFilter:
                       } for x in raw_query.split("&") 
                           if x.split("=")[0] in fields]
 
-
-
     def filter(self):
         filtered=self.model
         if len(self.all_query)==0:

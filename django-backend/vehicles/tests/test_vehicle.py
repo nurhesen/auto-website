@@ -2,6 +2,9 @@ from django.test import TestCase
 from vehicles.models import Vehicle
 from brands.models import VehicleBrand, VehicleModel
 
+
+
+
 class VehicleModelTestCase(TestCase):
     def setUp(self):
         # Create a VehicleBrand object

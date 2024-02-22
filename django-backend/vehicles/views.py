@@ -28,7 +28,6 @@ class VehicleView(APIView):
 
 
 
-
 class VehiclesListView(APIView):
     def get(self, request, format=None):
         
@@ -36,7 +35,7 @@ class VehiclesListView(APIView):
             'brand':request.query_params.get('brand'),
             'model':request.query_params.get('model'),
         }
-        print(query)
+        
         if query['brand']:
             brand=VehicleBrand.objects.filter(name=query['brand'])
             if query['model']:

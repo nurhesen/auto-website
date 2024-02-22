@@ -1,12 +1,8 @@
 from django.contrib import admin
 from .models import Vehicle, VehicleImages
 from django.utils.html import format_html
-
-
 from PIL import Image
-
 from django.utils.safestring import mark_safe
-
 
 
 
@@ -37,7 +33,6 @@ class VehicleAdmin(admin.ModelAdmin):
     inlines = [
         VehicleImagesInline
     ]
-
 
 
 admin.site.register(Vehicle, VehicleAdmin)
