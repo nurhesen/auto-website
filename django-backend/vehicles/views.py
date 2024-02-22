@@ -18,7 +18,7 @@ class VehicleBrandView(APIView):
 
 
 
-class VehicleView(APIView):
+class VehicleDetailView(APIView):
     def get(self, request, id, format=None):
         model=Vehicle.objects.filter(id=id).first()
         if not model:
