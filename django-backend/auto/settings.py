@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-
     "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,9 +59,7 @@ ROOT_URLCONF = 'auto.urls'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-
-
+    "http://localhost:3000",
 ]
 
 
@@ -88,12 +85,6 @@ WSGI_APPLICATION = 'auto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -126,6 +117,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'Lax'
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -151,8 +146,6 @@ STATIC_URL = '/dj-static/'
 
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR,"dj-static"),
-
-
 ]
 
 

@@ -28,6 +28,8 @@ services:
   db:
     image: mysql:latest
     container_name: db
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - ./.env
     restart: always

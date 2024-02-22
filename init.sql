@@ -1,0 +1,3 @@
+-- init.sql
+
+GRANT CREATE, ALTER, DROP, INDEX, SELECT, INSERT, UPDATE, DELETE, REFERENCES ON *.* TO 'mysql-user'@'%';
