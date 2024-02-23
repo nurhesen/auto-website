@@ -7,6 +7,9 @@ log_format = '%(asctime)s - %(levelname)s - \n\n\
 %(message)s\n\n\
 ----------------------------------------------------------------------\n\n'
 
-coloredlogs.install(level='DEBUG', fmt=log_format)
+# coloredlogs.install(level='DEBUG', fmt=log_format)
 
+# Example usage
+# Disable default Django logging configuration
+# LOGGING_CONFIG = None
 
