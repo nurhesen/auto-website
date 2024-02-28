@@ -1,15 +1,11 @@
 from django.contrib import admin
 from .models import Vehicle, VehicleImages
-from django.utils.html import format_html
-from PIL import Image
 from django.utils.safestring import mark_safe
-
-
 
 
 class VehicleImagesInline(admin.TabularInline):
     model = VehicleImages
-    extra=0
+    extra = 0
     list_display = [
         "thumbnail",
     ]
@@ -28,7 +24,6 @@ class VehicleImagesInline(admin.TabularInline):
             )
 
 
-
 class VehicleAdmin(admin.ModelAdmin):
     inlines = [
         VehicleImagesInline
@@ -36,6 +31,3 @@ class VehicleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Vehicle, VehicleAdmin)
-
-
-

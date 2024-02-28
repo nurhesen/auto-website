@@ -9,7 +9,10 @@ class VehicleModelTestCase(TestCase):
 
     def test_vehicle_model_creation(self):
         # Create a VehicleModel object
-        model = VehicleModel.objects.create(name='Test Model', brand=self.brand)
+        model = VehicleModel.objects.create(
+            name='Test Model',
+            brand=self.brand
+            )
 
         # Retrieve the model from the database
         saved_model = VehicleModel.objects.get(name='Test Model')
@@ -19,7 +22,10 @@ class VehicleModelTestCase(TestCase):
 
     def test_vehicle_model_full_name(self):
         # Create a VehicleModel object
-        model = VehicleModel.objects.create(name='Test Model', brand=self.brand)
+        model = VehicleModel.objects.create(
+            name='Test Model',
+            brand=self.brand
+            )
 
         # Check the full name of the model
         self.assertEqual(model.full_name(), 'Test Brand Test Model')

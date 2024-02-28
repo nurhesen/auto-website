@@ -1,8 +1,10 @@
-
-from django.contrib import admin
 from django.urls import path
+from vehicles.views import (
+    VehiclesListView,
+    VehicleDetailView,
+    VehicleBrandView
+)
 
-from vehicles.views import VehiclesListView, VehicleDetailView, VehicleBrandView
 
 urlpatterns = [
     path('brands/', VehicleBrandView.as_view()),

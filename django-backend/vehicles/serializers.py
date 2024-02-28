@@ -2,13 +2,12 @@ from .models import Vehicle, VehicleImages
 from rest_framework import serializers
 
 
-
-
 class VehicleImageSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model=VehicleImages
-        fields=('image',)
+        model = VehicleImages
+        fields = ('image',)
+
 
 class VehicleListSerializer(serializers.ModelSerializer):
     condition = serializers.CharField(source='get_condition_display')
@@ -21,16 +20,15 @@ class VehicleListSerializer(serializers.ModelSerializer):
 
     def get_brand_model(self, obj):
         return obj.brand_model.full_name()
-    
+
     def get_images(self, obj):
-        model=obj.images.all().first()
+        model = obj.images.all().first()
 
         return model.image.url
+
     class Meta:
-        model=Vehicle
-        fields='__all__'
-
-
+        model = Vehicle
+        fields = '__all__'
 
 
 class VehicleSerializer(serializers.ModelSerializer):
@@ -44,13 +42,12 @@ class VehicleSerializer(serializers.ModelSerializer):
 
     def get_brand_model(self, obj):
         return obj.brand_model.full_name()
-    
+
     def get_images(self, obj):
-        model=obj.images.all()
+        model = obj.images.all()
         serializer = VehicleImageSerializer(model, many=True)
         return serializer.data
-    
-    class Meta:
-        model=Vehicle
-        fields='__all__'
 
+    class Meta:
+        model = Vehicle
+        fields = '__all__'

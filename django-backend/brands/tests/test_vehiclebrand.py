@@ -1,6 +1,7 @@
 from django.test import TestCase
 from brands.models import VehicleBrand
 
+
 class VehicleBrandTestCase(TestCase):
     def test_vehicle_brand_creation(self):
         # Create a VehicleBrand object
@@ -11,4 +12,3 @@ class VehicleBrandTestCase(TestCase):
 
         # Check that the brand was created successfully
         self.assertEqual(brand, saved_brand)
-

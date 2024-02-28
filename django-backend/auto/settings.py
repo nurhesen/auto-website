@@ -159,14 +159,3 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'out')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-# Check if DEBUG is True
-if DEBUG:
-    # Use test settings if DEBUG is True
-    try:
-        from .test_settings import *
-    except ImportError:
-        pass
-
