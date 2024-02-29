@@ -14,8 +14,6 @@ sudo docker-compose build
 sudo docker-compose up react
 
 
-
-
 # Specify the file path and name
 nginx_config_file="docker-compose-app.service"
 current_location="$(pwd)"
@@ -43,8 +41,6 @@ echo "$nginx_config" | sudo tee "$nginx_config_file" > $nginx_config_file
 
 # Optionally, display a message indicating success
 echo "Nginx configuration file created successfully at: $nginx_config_file"
-
-
 
 
 sudo cp -f docker-compose-app.service /etc/systemd/system/
