@@ -31,7 +31,7 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/usr/local/bin/docker-compose -f $current_location/docker-compose.yml up --scale react=0
+ExecStart=exec >> /var/log/systemctl_log.log 2>&1 && /usr/local/bin/docker-compose -f $current_location/docker-compose.yml up --scale react=0
 ExecStop=/usr/local/bin/docker-compose -f $current_location/docker-compose.yml down
 
 [Install]
