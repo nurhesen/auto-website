@@ -18,7 +18,7 @@ function CustomContainer({ children }) {
           position: "fixed",
         }}
         alt="Background"
-        src="/static/images/bg.jpg"
+        src="bg.jpg"
       />
       <Box
         sx={{
