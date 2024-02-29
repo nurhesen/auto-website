@@ -1,55 +1,57 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+
+sudo yum update -y
+sudo yum install docker -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -a -G docker $(whoami)
+sudo usermod -aG docker $USER
+sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 
-echo "Overwriting nginx configuration"
-sh deploy-commands/overwrite-nginx-config.sh $1
+sudo docker-compose build
+sudo docker-compose up react
 
 
-sleep 2
-
-echo "Overwriting systemd configuration"
-sh deploy-commands/overwrite-systemd-config.sh
-
-sleep 2
-
-echo "Installing Docker"
-sh deploy-commands/install-docker.sh
-
-sleep 2
-
-echo "Installing Docker compose"
-sh deploy-commands/install-docker-compose.sh
-
-sleep 2
-
-echo "Setting Docker permissions"
-sh deploy-commands/docker-permission.sh
-
-sleep 10
-
-echo "Building docker container"
-sudo docker-compose build &
-
-# Capture the process ID of the last background command
-build_pid=$!
-
-# Wait for the build process to finish
-wait $build_pid
-
-# Continue with the rest of your script after the build is complete
-echo "Docker-compose build has finished, continuing with the script."
-
-sleep 2
-
-echo "Setting up systemctl"
-sh deploy-commands/setup-systemctl.sh
-
-sleep 2
-
-echo "Setting up nginx"
-sh deploy-commands/setup-nginx.sh
 
 
-echo "Rebooting..."
+# Specify the file path and name
+nginx_config_file="docker-compose-app.service"
+current_location="$(pwd)"
+
+
+# Nginx configuration content with user-provided IP
+nginx_config="
+[Unit]
+Description=Docker Compose Application
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/local/bin/docker-compose -f $current_location/docker-compose.yml up --scale react=0
+ExecStop=/usr/local/bin/docker-compose -f $current_location/docker-compose.yml down
+
+[Install]
+WantedBy=default.target
+"
+
+# Write the configuration to the file (replace the existing file)
+echo "$nginx_config" | sudo tee "$nginx_config_file" > $nginx_config_file
+
+# Optionally, display a message indicating success
+echo "Nginx configuration file created successfully at: $nginx_config_file"
+
+
+
+
+sudo cp -f docker-compose-app.service /etc/systemd/system/
+sudo rm docker-compose-app.service
+sudo systemctl daemon-reload
+sudo systemctl enable docker-compose-app
+sudo systemctl start --no-block docker-compose-app
+
+
 sudo reboot
