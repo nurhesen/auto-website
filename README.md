@@ -19,6 +19,7 @@ Enter the folder:
 cd auto-website
 
 ```
+Configure .env file for your preferences.
 
 Build and run docker-compose:
 
