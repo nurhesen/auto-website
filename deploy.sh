@@ -11,6 +11,20 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 
 sudo docker-compose build
+sudo docker-compose up react
+
+
+
+
+
+
+# Check if the build has finished
+while sudo docker-compose ps | grep -q "Starting"; do
+    echo "Build in progress..."
+    sleep 5
+done
+
+echo "Build finished!"
 
 
 # Specify the file path and name
