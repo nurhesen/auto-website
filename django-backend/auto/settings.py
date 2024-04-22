@@ -23,20 +23,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--dsauih231$%3123jsday14%^3213J21CahTa121vga%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False')
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 # Application definition
 
 INSTALLED_APPS = [
-    "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
+    "corsheaders",
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
@@ -48,8 +48,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
-     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -59,9 +59,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'auto.urls'
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
 
 
 TEMPLATES = [
@@ -93,7 +90,7 @@ DATABASES = {
         'NAME': os.environ.get('MYSQL_DATABASE', 'mysql-db'),
         'USER': os.environ.get('MYSQL_USER', 'mysql-user'),
         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'mysql-password'),
-        'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'db'),
+        'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'db_auto_website'),
         'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
     }
 }
@@ -124,9 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SAMESITE = 'Lax'
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Internationalization
@@ -157,5 +152,14 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'out')
+
+
+CSRF_COOKIE_SECURE = True  # Set to True if your site is served over HTTPS
+CSRF_COOKIE_HTTPONLY = True  # This prevents JavaScript from accessing the CSRF cookie
+CSRF_COOKIE_SAMESITE = 'Lax'  # Adjust as needed ('Lax', 'Strict', 'None')
+
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

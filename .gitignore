@@ -43,19 +43,19 @@ __pycache__/
 node_modules
 node_modules/
 
-/build
-/build/
-build
-build/
+# /build
+# /build/
+# build
+# build/
 
 /out
 /out/
 out
 out/
-/static
-/static/
-static
-static/
+# /static
+# /static/
+# static
+# static/
 /media
 /media/
 media

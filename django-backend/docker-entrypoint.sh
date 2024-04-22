@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST=db
+HOST=db_auto_website
 PORT=3306
 
 # Loop until the database connection is successful
@@ -12,9 +12,9 @@ done
 echo "Connection to Database $HOST:$PORT is active!"
 
 python manage.py makemigrations
-python manage.py migrate
-python manage.py loaddata db_dump.json
-cp -r /temp_media/media /usr/src/app
+# python manage.py migrate
+# python manage.py loaddata db_dump.json
+# cp -r /temp_media/media /usr/src/app
 python manage.py migrate
 python manage.py collectstatic --noinput
 
