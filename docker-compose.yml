@@ -17,8 +17,6 @@ services:
   django_auto_website:
     build: ./django-backend
     container_name: django_auto_website
-    ports:
-      - "8000:8000"
     volumes:
       - ./django-backend:/usr/src/app/
       - static:/usr/src/app/out/
@@ -31,8 +29,6 @@ services:
   react_auto_website:
     build: ./react-frontend
     container_name: react_auto_website
-    ports:
-      - "3000:3000"
     env_file:
       - ./.env
     volumes:
