@@ -2,6 +2,13 @@
 
 [https://auto-website.nurhesen.com/](https://auto-website.nurhesen.com/)
 
+Admin:
+[https://auto-website.nurhesen.com/admin/](https://auto-website.nurhesen.com/admin/)
+
+```
+username: admin
+password: admin
+```
 
 # For development on local pc:
 
