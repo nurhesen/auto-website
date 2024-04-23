@@ -1,8 +1,6 @@
-# Deploy with one click at my AWS instance:
+# Live version:
 
-[nurhesen.click/auto-website-deploy](https://www.nurhesen.click/deploy)
-
-P.S: Instance will only be active for 10 minutes after it is deployed
+[https://auto-website.nurhesen.com/](https://auto-website.nurhesen.com/)
 
 
 # For development on local pc:
